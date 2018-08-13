@@ -1,0 +1,7 @@
+port: 8000
+check_interval: 30  # seconds
+connection_timeout: 5 # seconds
+nodes:
+  - https://mainnet.infura.io/token
+  - http://localhost:8545
+block_treshold: 10
