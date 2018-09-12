@@ -1,15 +1,17 @@
 [![OnGrid Systems Blockchain Applications DApps Development](img/ongrid-systems-cover.png)](https://ongrid.pro/)
 
-# Load Balancer
-A simple load balancer / reverse proxy written in GoLang for blockchain nodes.
-Only Web3 compatible nodes are currently supported.
+![GitHub last commit](https://img.shields.io/github/last-commit/OnGridSystems/LoadBalancer.svg)
+[![Ethereum grant status](https://img.shields.io/badge/language-golang-green.svg)](https://blog.ethereum.org/2018/08/17/ethereum-foundation-grants-update-wave-3/)
+![License](https://img.shields.io/github/license/OnGridSystems/LoadBalancer.svg)
 
-## Features
- - Acts as a reverse proxy, sitting between clients and web servers.
- - Chooses node with biggest block number
- - Falls back on other web-servers if one goes down
+# Blockchain Load Balancer
+Load balancer / reverse proxy written in GoLang for blockchain nodes.
+It provides redundant interface for applications using Ethereum and acts as a reverse proxy 
+sitting between ethereum client and nodes. It constantly checks the node availability and its latest block number and
+keeps the list of healthy web3 providers. If node goes offline or slows down the requests fall back to another node.
+Only Ethereum Web3 over HTTPs nodes are currently supported (see [roadmap](https://github.com/nwoodthorpe/Load-Balancer-Golang/issues?q=is%3Aissue+is%3Aopen+label%3Afeature))
 
-# Installation
+## Install
 With docker
 
 ```
@@ -23,7 +25,7 @@ dep ensure
 go build
 ```
 
-# Using
+## Configure
 Example config file
 ```
 port: 8000
@@ -40,7 +42,7 @@ block_treshold: 10
 * nodes - list of polling nodes
 * block_treshold - node switch block treshold
 
-Start balancer:
+## Run 
 With docker
 ```
 docker run -v config.yml:/config.yml loadbalancer
@@ -50,5 +52,6 @@ Without docker
 LoadBalancer -c /path/to/config.yml
 ```
 
-## Future Features
-[Issues tagged 'feature'](https://github.com/nwoodthorpe/Load-Balancer-Golang/issues?q=is%3Aissue+is%3Aopen+label%3Afeature)
+### License
+
+Each file included in this repository is licensed under the [MIT license](LICENSE).
